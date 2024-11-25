@@ -1,10 +1,10 @@
-package com.tigran.iot_messaging_platform;
+package com.tigran.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IotMessagingPlatformApplicationTests {
+class ApiTests {
 
 	@Test
 	void contextLoads() {

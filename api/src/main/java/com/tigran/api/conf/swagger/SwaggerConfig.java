@@ -1,4 +1,4 @@
-package com.tigran.iot_messaging_platform.conf.swagger;
+package com.tigran.api.conf.swagger;
 
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;

@@ -1,7 +1,7 @@
-package com.tigran.iot_messaging_platform.common.model.audit.listner;
+package com.tigran.api.common.model.audit.listner;
 
-import com.tigran.iot_messaging_platform.common.model.audit.AuditableBaseEntity;
-import com.tigran.iot_messaging_platform.common.model.base.ModelStatus;
+import com.tigran.api.common.model.audit.AuditableBaseEntity;
+import com.tigran.api.common.model.base.ModelStatus;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

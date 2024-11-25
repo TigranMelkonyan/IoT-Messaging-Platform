@@ -1,4 +1,4 @@
-package com.tigran.iot_messaging_platform.conf.security.jwt;
+package com.tigran.api.conf.security.jwt;
 
 /**
  * Created by Tigran Melkonyan

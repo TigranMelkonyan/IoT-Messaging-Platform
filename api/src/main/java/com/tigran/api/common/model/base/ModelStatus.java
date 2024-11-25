@@ -1,4 +1,4 @@
-package com.tigran.iot_messaging_platform.common.model.base;
+package com.tigran.api.common.model.base;
 
 /**
  * Created by Tigran Melkonyan

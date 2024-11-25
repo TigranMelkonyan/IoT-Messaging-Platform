@@ -1,4 +1,4 @@
-package com.tigran.iot_messaging_platform.conf.security.jwt;
+package com.tigran.api.conf.security.jwt;
 
 import io.jsonwebtoken.JwtException;
 import org.springframework.beans.factory.annotation.Value;

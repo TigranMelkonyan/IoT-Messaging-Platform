@@ -1,7 +1,8 @@
-package com.tigran.iot_messaging_platform;
+package com.tigran.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 
 @SpringBootApplication
 public class ApiApplication {

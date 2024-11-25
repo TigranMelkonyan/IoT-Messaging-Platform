@@ -1,6 +1,6 @@
-package com.tigran.iot_messaging_platform.conf.security;
+package com.tigran.api.conf.security;
 
-import com.tigran.iot_messaging_platform.conf.security.jwt.JwtTokenInspector;
+import com.tigran.api.conf.security.jwt.JwtTokenInspector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

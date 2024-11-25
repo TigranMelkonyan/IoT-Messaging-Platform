@@ -1,8 +1,8 @@
-package com.tigran.iot_messaging_platform.common.model.audit;
+package com.tigran.api.common.model.audit;
 
-import com.tigran.iot_messaging_platform.common.model.audit.listner.AuditListener;
-import com.tigran.iot_messaging_platform.common.model.base.AbstractDomainEntity;
-import com.tigran.iot_messaging_platform.common.model.base.ModelStatus;
+import com.tigran.api.common.model.audit.listner.AuditListener;
+import com.tigran.api.common.model.base.AbstractDomainEntity;
+import com.tigran.api.common.model.base.ModelStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;

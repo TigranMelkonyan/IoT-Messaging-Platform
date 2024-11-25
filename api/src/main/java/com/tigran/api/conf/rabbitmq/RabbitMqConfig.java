@@ -1,4 +1,4 @@
-package com.tigran.iot_messaging_platform.conf.rabbitmq;
+package com.tigran.api.conf.rabbitmq;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Binding;
