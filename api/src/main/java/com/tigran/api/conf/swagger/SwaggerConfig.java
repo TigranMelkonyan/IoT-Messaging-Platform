@@ -36,7 +36,7 @@ public class SwaggerConfig {
                                 .title(DISPLAY_NAME)
                                 .description(DESCRIPTION)))
                 .pathsToMatch("/**")
-                .packagesToScan("com.tigran.iot_messaging_platform")
+                .packagesToScan("com.tigran.api")
                 .build();
     }
 }

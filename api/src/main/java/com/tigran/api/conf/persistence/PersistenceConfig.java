@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * Time: 7:33 PM
  */
 @EnableJpaRepositories(basePackages = {"com.tigran.api.repository"})
-@EntityScan(basePackages = {"com.tmx.platform"})
+@EntityScan(basePackages = {"com.tigran.api.domain.entity"})
 @Configuration
 public class PersistenceConfig {
 }

@@ -1,4 +1,4 @@
-package com.tigran.api.common.model.base;
+package com.tigran.api.domain.entity.common.base;
 
 /**
  * Created by Tigran Melkonyan

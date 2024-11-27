@@ -1,7 +1,7 @@
-package com.tigran.api.common.model.audit.listner;
+package com.tigran.api.domain.entity.common.audit.listner;
 
-import com.tigran.api.common.model.audit.AuditableBaseEntity;
-import com.tigran.api.common.model.base.ModelStatus;
+import com.tigran.api.domain.entity.common.audit.AuditableBaseEntity;
+import com.tigran.api.domain.entity.common.base.ModelStatus;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;

@@ -1,14 +1,13 @@
-package com.tigran.api.common.model.audit;
+package com.tigran.api.domain.entity.common.audit;
 
-import com.tigran.api.common.model.audit.listner.AuditListener;
-import com.tigran.api.common.model.base.AbstractDomainEntity;
-import com.tigran.api.common.model.base.ModelStatus;
+import com.tigran.api.domain.entity.common.audit.listner.AuditListener;
+import com.tigran.api.domain.entity.common.base.AbstractDomainEntity;
+import com.tigran.api.domain.entity.common.base.ModelStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -24,7 +23,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditListener.class)
 @Getter
 @Setter
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public  class AuditableBaseEntity extends AbstractDomainEntity {
 
     @CreatedDate

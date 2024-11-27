@@ -3,6 +3,9 @@
 This project serves as a base for building IoT-based solutions.
 It is designed to be highly extensible, allowing developers to integrate additional
 functionality with ease.
+The main idea of this project is to have physical devices that publish data and
+let users monitor devices in realtime or see historical data, also be able to get
+time sensitive no and threshold based notifications.
 
 ## Key Features:
 
@@ -18,6 +21,7 @@ The modular architecture enables seamless expansion to accommodate new features 
 
 This project provides a robust starting point for creating IoT based applications, empowering
 developers to adapt it to their unique requirements.
+Additionally, the user creation process can be adapted to other business requirements.
 
 ## Used Technologies
 
@@ -40,8 +44,7 @@ The project is divided into two independent, self-contained microservices, each 
 a specific responsibility`
 API Service: Handles messaging and data sharing,
 OAuth Service: Manages user authentication and authorization.
-I have followed the traditional layered
-architectural design pattern, with a clear separation of concerns.
+I have followed the ##################.
 Additionally, I used ############ for notification system.
 
 ## Getting Started
@@ -67,6 +70,9 @@ You need to follow up some steps before you can run the application`
    spring.rabbitmq.username=
    spring.rabbitmq.password=]
 
+   #### JWT 
+   [jwt.secret=]
+
 4. Build the project using maven
    [./mvn clean install]
 
@@ -78,9 +84,10 @@ You need to follow up some steps before you can run the application`
    or run separately
    [./mvn test -Dtest"TestClassName"]
 
+
 * The application will not run without setting up proper application properties
-  for RabbitMq, Firebase, Twilio and Datasource, for simple demonstration you
+  for RabbitMq, Firebase, Twilio, JWT and Datasource, for simple demonstration you
   can run unit tests without using real beans.
   Additionally, you need to have AWS credentials and use the file located in
   resources/publisher RabbitMqPublisher.go, which is already compiled GoLang file
-  and put it in AWS Lambda to be able to publish test data.
+  and put it in AWS Lambda to be able to publish test data from AWS.

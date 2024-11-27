@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -18,9 +16,10 @@ import java.security.SecureRandom;
  * Date: 11/21/24
  * Time: 9:07 PM
  */
+//TODO cleanup after development
 @Configuration
-@EnableWebSecurity
-@EnableMethodSecurity
+//@EnableWebSecurity
+//@EnableMethodSecurity
 public class SecurityConfig {
 
     private final JwtTokenInspector jwtTokenInspector;
@@ -49,12 +48,11 @@ public class SecurityConfig {
 //                .csrf(AbstractHttpConfigurer::disable)
 //                .oauth2ResourceServer(resourceServer -> resourceServer
 //                        .opaqueToken(token -> token.introspector(jwtTokenInspector))).build();
-        //TODO remove after development
         http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll()
                 )
                 .httpBasic(Customizer.withDefaults())
                 .csrf(c -> {
-                    c.ignoringRequestMatchers("/white");
+                    c.ignoringRequestMatchers("/**");
                 });
         return http.build();
     }
