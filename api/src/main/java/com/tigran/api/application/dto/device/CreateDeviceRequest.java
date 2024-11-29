@@ -1,4 +1,4 @@
-package com.tigran.api.application.usecase.dto.device;
+package com.tigran.api.application.dto.device;
 
 import com.tigran.api.domain.model.entity.device.Device;
 import com.tigran.api.domain.model.common.validate.ValidatableRequest;
@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class UpdateDeviceRequest extends ValidatableRequest {
+public class CreateDeviceRequest extends ValidatableRequest {
 
     @NotBlank(message = "required")
     @Size(max = 16)
@@ -27,10 +27,11 @@ public class UpdateDeviceRequest extends ValidatableRequest {
     @Size(max = 12)
     private String note;
 
-    public Device toEntity(final Device device) {
-        device.setMacAddress(this.macAddress);
-        device.setName(this.name);
-        device.setNote(this.note);
-        return device;
+    public Device toEntity() {
+        Device entity = new Device();
+        entity.setMacAddress(this.macAddress);
+        entity.setName(this.name);
+        entity.setNote(this.note);
+        return entity;
     }
 }

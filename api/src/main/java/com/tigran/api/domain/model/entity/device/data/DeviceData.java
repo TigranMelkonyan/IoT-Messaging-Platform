@@ -4,8 +4,10 @@ import com.tigran.api.domain.model.entity.common.audit.AuditableBaseEntity;
 import com.tigran.api.domain.model.entity.device.Device;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
@@ -17,6 +19,8 @@ import java.time.Instant;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DeviceData extends AuditableBaseEntity {
 
     @ManyToOne

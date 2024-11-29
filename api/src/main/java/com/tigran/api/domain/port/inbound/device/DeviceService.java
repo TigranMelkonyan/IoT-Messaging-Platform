@@ -1,7 +1,7 @@
 package com.tigran.api.domain.port.inbound.device;
 
-import com.tigran.api.application.usecase.dto.device.CreateDeviceRequest;
-import com.tigran.api.application.usecase.dto.device.UpdateDeviceRequest;
+import com.tigran.api.application.dto.device.CreateDeviceRequest;
+import com.tigran.api.application.dto.device.UpdateDeviceRequest;
 import com.tigran.api.domain.model.common.page.PageModel;
 import com.tigran.api.domain.model.common.search.DeviceSearchProperties;
 import com.tigran.api.domain.model.entity.common.base.ModelStatus;

@@ -1,4 +1,4 @@
-package com.tigran.api.application.usecase.dto.device;
+package com.tigran.api.application.dto.device;
 
 import com.tigran.api.domain.model.entity.device.Device;
 import lombok.AllArgsConstructor;

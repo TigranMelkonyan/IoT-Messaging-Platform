@@ -2,8 +2,8 @@ package com.tigran.api.application.usecase.device;
 
 import com.tigran.api.adapter.outbound.persistence.device.DeviceRepository;
 import com.tigran.api.adapter.outbound.persistence.device.DeviceRepositoryCustomImpl;
-import com.tigran.api.application.usecase.dto.device.CreateDeviceRequest;
-import com.tigran.api.application.usecase.dto.device.UpdateDeviceRequest;
+import com.tigran.api.application.dto.device.CreateDeviceRequest;
+import com.tigran.api.application.dto.device.UpdateDeviceRequest;
 import com.tigran.api.domain.exception.RecordConflictException;
 import com.tigran.api.domain.exception.errorcode.ErrorCode;
 import com.tigran.api.domain.model.common.page.PageModel;
