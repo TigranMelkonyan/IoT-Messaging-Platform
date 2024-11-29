@@ -1,5 +1,6 @@
 package com.tigran.api.domain.port.inbound.device.data;
 
+import com.tigran.api.domain.model.entity.common.base.ModelStatus;
 import com.tigran.api.domain.model.entity.device.data.DeviceData;
 
 import java.time.Instant;
@@ -20,6 +21,7 @@ public interface DeviceDataService {
     List<DeviceData> searchWithRangeByDevice(
             final UUID deviceId,
             final Instant startTime,
-            final Instant endTime);
+            final Instant endTime,
+            final ModelStatus status);
 
 }

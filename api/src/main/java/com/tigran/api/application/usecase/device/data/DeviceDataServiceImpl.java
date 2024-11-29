@@ -59,9 +59,10 @@ public class DeviceDataServiceImpl implements DeviceDataService {
     public List<DeviceData> searchWithRangeByDevice(
             final UUID deviceId,
             final Instant startTime,
-            final Instant endTime) {
+            final Instant endTime,
+            final ModelStatus status) {
         log.info("Retrieving device data by device id - {} ", deviceId);
-        List<DeviceData> result = repository.findByTimestampBetween(deviceId, startTime, endTime);
+        List<DeviceData> result = repository.findByTimestampBetween(deviceId, startTime, endTime, status);
         log.info("Successfully retrieved device data by device id - {}, result - {}", deviceId, result);
         return result;
     }

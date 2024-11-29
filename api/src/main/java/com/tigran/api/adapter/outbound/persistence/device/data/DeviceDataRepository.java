@@ -1,5 +1,6 @@
 package com.tigran.api.adapter.outbound.persistence.device.data;
 
+import com.tigran.api.domain.model.entity.common.base.ModelStatus;
 import com.tigran.api.domain.model.entity.device.data.DeviceData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,9 +23,10 @@ public interface DeviceDataRepository extends JpaRepository<DeviceData, UUID> {
 
     void deleteAllByDeviceId(final UUID deviceId);
 
-    @Query("SELECT d FROM DeviceData d WHERE d.device.id =:deviceId and d.timestamp BETWEEN :startDate AND :endDate")
+    @Query("SELECT d FROM DeviceData d WHERE d.device.id =:deviceId and d.timestamp BETWEEN :startDate AND :endDate and d.status =:status")
     List<DeviceData> findByTimestampBetween(
             @Param("deviceId") UUID deviceId,
             @Param("startDate") Instant startDate,
-            @Param("endDate") Instant endDate);
+            @Param("endDate") Instant endDate,
+            @Param("status")final ModelStatus status);
 }
