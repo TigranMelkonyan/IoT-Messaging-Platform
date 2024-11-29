@@ -41,22 +41,28 @@ public class DeviceDataServiceImpl implements DeviceDataService {
     @Override
     @Transactional
     public void deleteAllByDevice(final UUID deviceId, final boolean deleteFromDb) {
-        log.info("Deleting device data with device id - {} ", deviceId);
+        log.info("Deleting device data by device id - {} ", deviceId);
         Assert.notNull(deviceId, "deviceId cannot be null");
         if (deleteFromDb) {
             repository.deleteAllByDeviceId(deviceId);
-            log.info("Successfully deleted device with id - {} from db", deviceId);
+            log.info("Successfully deleted all device data by device id - {} from db", deviceId);
         } else {
             List<DeviceData> list = repository.findAllByDeviceId(deviceId);
             list.forEach(deviceData -> deviceData.setStatus(ModelStatus.DELETED));
             repository.saveAll(list);
-            log.info("Successfully soft deleted device data with device id - {} ", deviceId);
+            log.info("Successfully soft deleted device data by device id - {} ", deviceId);
         }
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<DeviceData> searchWithRangeByDevice(final UUID deviceId, final Instant startTime, final Instant endTime) {
-        return List.of();
+    public List<DeviceData> searchWithRangeByDevice(
+            final UUID deviceId,
+            final Instant startTime,
+            final Instant endTime) {
+        log.info("Retrieving device data by device id - {} ", deviceId);
+        List<DeviceData> result = repository.findByTimestampBetween(deviceId, startTime, endTime);
+        log.info("Successfully retrieved device data by device id - {}, result - {}", deviceId, result);
+        return result;
     }
 }
