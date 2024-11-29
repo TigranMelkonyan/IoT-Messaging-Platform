@@ -1,6 +1,6 @@
 package com.tigran.api.domain.model.rabbitmq;
 
-import com.tigran.api.domain.model.common.event.cosnumer.data.ConsumerData;
+import com.tigran.api.domain.model.event.cosnumer.data.ConsumerData;
 import lombok.Data;
 
 import java.time.Instant;
