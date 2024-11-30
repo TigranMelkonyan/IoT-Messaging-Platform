@@ -6,5 +6,7 @@ package com.tigran.api.domain.model.event.type;
  * Time: 6:21 PM
  */
 public enum EventType {
-    DATA_PUBLISH
+    DATA_PUBLISH,
+    TRIP_START,
+    TRIP_END
 }

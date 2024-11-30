@@ -24,8 +24,8 @@ public class RabbitMqConfig {
     private final String thingsDataQueue;
 
     RabbitMqConfig(
-            @Value("${dispatch.rabbitmq.things.exchange}") final String thingsExchange,
-            @Value("${dispatch.rabbitmq.things.data.queue}") final String thingsDataQueue) {
+            @Value("${rabbitmq.device.exchange}") final String thingsExchange,
+            @Value("${rabbitmq.device.data.queue}") final String thingsDataQueue) {
         this.thingsExchange = thingsExchange;
         this.thingsDataQueue = thingsDataQueue;
     }

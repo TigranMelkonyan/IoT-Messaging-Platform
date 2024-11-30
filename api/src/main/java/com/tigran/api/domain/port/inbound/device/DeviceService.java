@@ -20,6 +20,8 @@ public interface DeviceService {
 
     Device getById(final UUID id);
 
+    Device getByMacAddress(final String macAddress);
+
     Device update(final UUID id, final UpdateDeviceRequest request);
 
     void delete(final UUID id, final boolean deleteFromDb);

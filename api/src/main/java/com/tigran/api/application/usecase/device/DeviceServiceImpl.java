@@ -62,6 +62,18 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Device getByMacAddress(final String macAddress) {
+        log.info("Retrieving device with mac address - {} ", macAddress);
+        Assert.notNull(macAddress, "Id cannot be null");
+        Device device = repository.findByMacAddress(macAddress)
+                .orElseThrow(() -> new RecordConflictException(String
+                        .format("Device with macAddress - %s not exists", macAddress), ErrorCode.NOT_EXISTS_EXCEPTION));
+        log.info("Successfully retrieving device with mac address - {}, result - {} ", macAddress, device);
+        return device;
+    }
+
+    @Override
     @Transactional
     public Device update(final UUID id, final UpdateDeviceRequest request) {
         log.info("Updating device with id - {} ", id);

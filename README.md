@@ -5,7 +5,7 @@ It is designed to be highly extensible, allowing developers to integrate additio
 functionality with ease.
 The main idea of this project is to have physical devices that publish data and
 let users monitor devices in realtime or see historical data, also be able to get
-time sensitive no and threshold based notifications.
+time sensitive notifications and threshold based notifications.
 
 ## Key Features:
 
@@ -14,7 +14,7 @@ Initially supports RabbitMQ but can be extended to work with other message broke
 
 [2] Comprehensive Notification Services:
 Easily add support for various messaging channels such as email, push notifications,
-SMS, in-app notifications, and more.
+SMS, in-app notifications.
 
 [3] Scalability:
 The modular architecture enables seamless expansion to accommodate new features and services.
@@ -35,6 +35,7 @@ Additionally, the user creation process can be adapted to other business require
 - **Twilio** - For sms notifications.
 - **Firebase** - For push notifications.
 - **Postgres** - As relational database management system.
+- **Feign client** - For easy interaction services.
 - **JUnit 5** - For testing design pattern implementations.
 - **Lombok** - For reducing boilerplate code.
 
@@ -44,8 +45,9 @@ The project is divided into two independent, self-contained microservices, each 
 a specific responsibility`
 API Service: Handles messaging and data sharing,
 OAuth Service: Manages user authentication and authorization.
-I have followed the ##################.
-Additionally, I used ############ for notification system.
+In API service I have followed the _hexagonal pattern_ structure for decoupling business logic
+from external services and infrastructure.
+Additionally, I have used _factory method_ and _builder_ patterns for notification services.
 
 ## Getting Started
 
@@ -70,14 +72,28 @@ You need to follow up some steps before you can run the application`
    spring.rabbitmq.username=
    spring.rabbitmq.password=]
 
-   #### JWT 
+   #### Email_client_config
+   [spring.mail.username=
+   spring.mail.password=]
+
+   #### JWT
    [jwt.secret=]
+
+   #### Api secret
+   [api.secret.key=]
+
+   #### Twilio_config
+   [twilio.account.sid=
+   twilio.auth.token=
+   twilio.phone.number=]
 
 4. Build the project using maven
    [./mvn clean install]
 
-5. Run application
-   [./mvn spring-boot:run]
+5. Run Api and Oauth applications
+   [./mvn -pl api spring-boot:run]
+
+   [./mvn -pl oauth spring-boot:run]
 
 6. Run tests
    [./mvn test]
@@ -86,8 +102,7 @@ You need to follow up some steps before you can run the application`
 
 
 * The application will not run without setting up proper application properties
-  for RabbitMq, Firebase, Twilio, JWT and Datasource, for simple demonstration you
-  can run unit tests without using real beans.
+  for RabbitMq, Twilio, JWT, Mail, Datasource and firebase_key.json file.
   Additionally, you need to have AWS credentials and use the file located in
-  resources/publisher RabbitMqPublisher.go, which is already compiled GoLang file
+  resources/publisher RabbitMqPublisher, which is already compiled GoLang file
   and put it in AWS Lambda to be able to publish test data from AWS.

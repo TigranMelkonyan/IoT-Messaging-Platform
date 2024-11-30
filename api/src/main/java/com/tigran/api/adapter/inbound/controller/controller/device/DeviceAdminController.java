@@ -1,5 +1,6 @@
-package com.tigran.api.adapter.inbound.controller.device;
+package com.tigran.api.adapter.inbound.controller.controller.device;
 
+import com.tigran.api.adapter.inbound.controller.controller.AbstractController;
 import com.tigran.api.application.dto.device.CreateDeviceRequest;
 import com.tigran.api.application.dto.device.DeviceResponse;
 import com.tigran.api.application.dto.device.PageResponse;

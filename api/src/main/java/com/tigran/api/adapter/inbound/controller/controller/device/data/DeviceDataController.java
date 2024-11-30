@@ -1,6 +1,6 @@
-package com.tigran.api.adapter.inbound.controller.device.controller;
+package com.tigran.api.adapter.inbound.controller.controller.device.data;
 
-import com.tigran.api.adapter.inbound.controller.device.AbstractController;
+import com.tigran.api.adapter.inbound.controller.controller.AbstractController;
 import com.tigran.api.application.dto.device.data.DeviceDataResponse;
 import com.tigran.api.domain.model.entity.common.base.ModelStatus;
 import com.tigran.api.domain.model.entity.device.data.DeviceData;

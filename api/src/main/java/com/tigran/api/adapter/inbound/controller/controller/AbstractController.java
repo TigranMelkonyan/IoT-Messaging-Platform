@@ -1,4 +1,4 @@
-package com.tigran.api.adapter.inbound.controller.device;
+package com.tigran.api.adapter.inbound.controller.controller;
 
 import com.tigran.api.domain.exception.RecordConflictException;
 import com.tigran.api.domain.exception.errorcode.ErrorCode;

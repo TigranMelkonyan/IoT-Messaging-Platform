@@ -15,5 +15,7 @@ import java.util.UUID;
 @Repository
 public interface DeviceRepository extends JpaRepository<Device, UUID> {
 
-    Optional<Device> findByMacAddressAndName(final String tripName, final String name);
+    Optional<Device> findByMacAddressAndName(final String macAddress, final String name);
+
+    Optional<Device> findByMacAddress(final String macAddress);
 }
