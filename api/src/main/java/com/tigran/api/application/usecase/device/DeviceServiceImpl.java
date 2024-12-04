@@ -7,14 +7,18 @@ import com.tigran.api.application.dto.device.UpdateDeviceRequest;
 import com.tigran.api.domain.exception.RecordConflictException;
 import com.tigran.api.domain.exception.errorcode.ErrorCode;
 import com.tigran.api.domain.model.common.page.PageModel;
-import com.tigran.api.domain.model.common.search.DeviceSearchProperties;
+import com.tigran.api.domain.model.common.search.DeviceOrderByOption;
+import com.tigran.api.domain.model.common.search.SearchProperties;
 import com.tigran.api.domain.model.entity.common.base.ModelStatus;
 import com.tigran.api.domain.model.entity.device.Device;
 import com.tigran.api.domain.port.inbound.device.DeviceService;
 import io.jsonwebtoken.lang.Assert;
+import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.UUID;
 
@@ -110,11 +114,13 @@ public class DeviceServiceImpl implements DeviceService {
     @Override
     @Transactional(readOnly = true)
     public PageModel<Device> search(
-            final DeviceSearchProperties request, final ModelStatus status,
-            final int page, final int size) {
-        log.info("Searching devices by request - {}", request);
-        Assert.notNull(request, "Request cannot be null");
-        PageModel<Device> devices = repositoryCustom.searchDevices(request, status, page, size);
+            @Valid final SearchProperties searchProperties,
+            @PathVariable final int page,
+            @PathVariable final int size,
+            @RequestParam final DeviceOrderByOption orderBy) {
+        log.info("Searching devices by request - {}", searchProperties);
+        Assert.notNull(searchProperties, "Request cannot be null");
+        PageModel<Device> devices = repositoryCustom.searchDevices(searchProperties, page, size, orderBy);
         log.info("Successfully retrieved devices - {}", devices);
         return new PageModel<>(devices.getItems(), devices.getTotalCount());
     }

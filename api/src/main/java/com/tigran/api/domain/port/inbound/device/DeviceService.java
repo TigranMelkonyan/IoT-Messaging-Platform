@@ -3,8 +3,8 @@ package com.tigran.api.domain.port.inbound.device;
 import com.tigran.api.application.dto.device.CreateDeviceRequest;
 import com.tigran.api.application.dto.device.UpdateDeviceRequest;
 import com.tigran.api.domain.model.common.page.PageModel;
-import com.tigran.api.domain.model.common.search.DeviceSearchProperties;
-import com.tigran.api.domain.model.entity.common.base.ModelStatus;
+import com.tigran.api.domain.model.common.search.DeviceOrderByOption;
+import com.tigran.api.domain.model.common.search.SearchProperties;
 import com.tigran.api.domain.model.entity.device.Device;
 
 import java.util.UUID;
@@ -27,9 +27,9 @@ public interface DeviceService {
     void delete(final UUID id, final boolean deleteFromDb);
 
     PageModel<Device> search(
-            final DeviceSearchProperties request,
-            final ModelStatus status,
+            final SearchProperties searchProperties,
             final int page,
-            final int size);
+            final int size,
+            final DeviceOrderByOption orderBy);
 
 }

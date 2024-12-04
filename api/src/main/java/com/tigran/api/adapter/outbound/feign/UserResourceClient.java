@@ -1,6 +1,6 @@
 package com.tigran.api.adapter.outbound.feign;
 
-import com.tigran.api.domain.model.shared.user.User;
+import com.tigran.api.domain.model.shared.user.UserAccount;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -15,5 +15,5 @@ import java.util.List;
 public interface UserResourceClient {
 
     @GetMapping("/users/with-enabled-notifications")
-    List<User> getAllUsersWithEnabledNotification();
+    List<UserAccount> getAllUsersWithEnabledNotification();
 }

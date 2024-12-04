@@ -8,7 +8,7 @@ import lombok.Data;
  * Time: 12:57 PM
  */
 @Data
-public class User {
+public class UserAccount {
 
     private String userName;
     private String firstName;
@@ -17,5 +17,5 @@ public class User {
     private String phone;
     private String firebaseClientToken;
     private boolean enableNotifications;
-    private UserNotificationInfo notificationInfo;
+    private UserAccountNotificationInfo notificationInfo;
 }

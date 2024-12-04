@@ -8,7 +8,7 @@ import lombok.Data;
  * Time: 1:07 PM
  */
 @Data
-public class UserNotificationInfo {
+public class UserAccountNotificationInfo {
 
     private boolean emailNotificationEnabled;
     private boolean smsNotificationEnabled;

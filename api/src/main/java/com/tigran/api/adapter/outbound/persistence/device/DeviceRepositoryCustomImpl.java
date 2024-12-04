@@ -1,8 +1,8 @@
 package com.tigran.api.adapter.outbound.persistence.device;
 
 import com.tigran.api.domain.model.common.page.PageModel;
-import com.tigran.api.domain.model.common.search.DeviceSearchProperties;
-import com.tigran.api.domain.model.entity.common.base.ModelStatus;
+import com.tigran.api.domain.model.common.search.DeviceOrderByOption;
+import com.tigran.api.domain.model.common.search.SearchProperties;
 import com.tigran.api.domain.model.entity.device.Device;
 import com.tigran.api.domain.port.outbound.device.DeviceRepositoryCustom;
 import jakarta.persistence.EntityManager;
@@ -30,12 +30,12 @@ public class DeviceRepositoryCustomImpl implements DeviceRepositoryCustom {
 
     @Override
     public PageModel<Device> searchDevices(
-            final DeviceSearchProperties searchProperties,
-            final ModelStatus status,
+            final SearchProperties searchProperties,
             final int page,
-            final int size) {
-        TypedQuery<Device> query = createQuery(searchProperties, "d", Device.class, status, false);
-        TypedQuery<Long> countQuery = createQuery(searchProperties, "count(d)", Long.class, status, true);
+            final int size,
+            final DeviceOrderByOption orderBy) {
+        TypedQuery<Device> query = createQuery(searchProperties, orderBy, "d", Device.class, false);
+        TypedQuery<Long> countQuery = createQuery(searchProperties, orderBy, "count(d)", Long.class, true);
         query.setFirstResult((page - 1) * size);
         query.setMaxResults(size);
         List<Device> devices = query.getResultList();
@@ -45,10 +45,10 @@ public class DeviceRepositoryCustomImpl implements DeviceRepositoryCustom {
     }
 
     private <T> TypedQuery<T> createQuery(
-            final DeviceSearchProperties searchProperties,
+            final SearchProperties searchProperties,
+            final DeviceOrderByOption orderBy,
             final String selectCondition,
             final Class<T> type,
-            final ModelStatus status,
             final boolean count) {
         Map<String, Object> appliedParams = new HashMap<>();
         String prefix = " where ";
@@ -59,13 +59,13 @@ public class DeviceRepositoryCustomImpl implements DeviceRepositoryCustom {
             prefix = " and ";
         }
         queryString = queryString + prefix + " d.status=:status ";
-        appliedParams.put("status", status);
+        appliedParams.put("status", searchProperties.getStatus());
         String sortOrder = "";
-        if (Objects.nonNull(searchProperties.getSortOrderBy())) {
-            sortOrder = searchProperties.getSortOrderBy().getValue();
+        if (Objects.nonNull(searchProperties.getSort())) {
+            sortOrder = searchProperties.getSort().getValue();
         }
-        if (Objects.nonNull(searchProperties.getDeviceSortingOption()) && !count) {
-            String sortField = switch (searchProperties.getDeviceSortingOption()) {
+        if (Objects.nonNull(orderBy) && !count) {
+            String sortField = switch (orderBy) {
                 case MAC_ADDRESS -> "d.macAddress";
                 case NAME -> "d.name";
                 case CREATED_ON -> "d.createdOn";

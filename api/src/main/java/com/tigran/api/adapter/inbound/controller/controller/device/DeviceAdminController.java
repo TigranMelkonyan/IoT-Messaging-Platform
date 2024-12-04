@@ -6,8 +6,8 @@ import com.tigran.api.application.dto.device.DeviceResponse;
 import com.tigran.api.application.dto.device.PageResponse;
 import com.tigran.api.application.dto.device.UpdateDeviceRequest;
 import com.tigran.api.domain.model.common.page.PageModel;
-import com.tigran.api.domain.model.common.search.DeviceSearchProperties;
-import com.tigran.api.domain.model.entity.common.base.ModelStatus;
+import com.tigran.api.domain.model.common.search.DeviceOrderByOption;
+import com.tigran.api.domain.model.common.search.SearchProperties;
 import com.tigran.api.domain.model.entity.device.Device;
 import com.tigran.api.domain.port.inbound.device.DeviceService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -80,11 +80,11 @@ public class DeviceAdminController extends AbstractController {
     @GetMapping("search/{page}/{size}")
     @Operation(summary = "Search Devices with pages")
     public ResponseEntity<PageResponse<DeviceResponse>> getPagesForDevices(
-            @Valid final DeviceSearchProperties searchProperties,
+            @Valid final SearchProperties searchProperties,
             @PathVariable final int page,
             @PathVariable final int size,
-            @RequestParam final ModelStatus status) {
-        PageModel<Device> result = deviceService.search(searchProperties, status, page, size);
+            @RequestParam final DeviceOrderByOption orderBy) {
+        PageModel<Device> result = deviceService.search(searchProperties, page, size, orderBy);
         PageResponse<DeviceResponse> response = new PageResponse<>(result
                 .getItems()
                 .stream().map(DeviceResponse::from)

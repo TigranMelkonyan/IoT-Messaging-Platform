@@ -1,7 +1,7 @@
 package com.tigran.api.domain.model.notification.reciver;
 
-import com.tigran.api.domain.model.shared.user.User;
-import com.tigran.api.domain.model.shared.user.UserNotificationInfo;
+import com.tigran.api.domain.model.shared.user.UserAccount;
+import com.tigran.api.domain.model.shared.user.UserAccountNotificationInfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,12 +28,12 @@ public class NotificationReceiverInfo {
     private boolean smsNotificationEnabled;
     private boolean pushNotificationEnabled;
 
-    public NotificationReceiverInfo from(final User user) {
+    public NotificationReceiverInfo from(final UserAccount user) {
         NotificationReceiverInfo receiverInfo = new NotificationReceiverInfo();
         receiverInfo.setEmail(user.getEmail());
         receiverInfo.setPhone(user.getPhone());
         receiverInfo.setUserName(user.getPhone());
-        UserNotificationInfo info = user.getNotificationInfo();
+        UserAccountNotificationInfo info = user.getNotificationInfo();
         receiverInfo.setEmailNotificationEnabled(info.isEmailNotificationEnabled());
         receiverInfo.setSmsNotificationEnabled(info.isSmsNotificationEnabled());
         receiverInfo.setPushNotificationEnabled(info.isPushNotificationEnabled());

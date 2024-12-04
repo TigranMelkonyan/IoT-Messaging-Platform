@@ -1,8 +1,8 @@
 package com.tigran.api.domain.port.outbound.device;
 
 import com.tigran.api.domain.model.common.page.PageModel;
-import com.tigran.api.domain.model.common.search.DeviceSearchProperties;
-import com.tigran.api.domain.model.entity.common.base.ModelStatus;
+import com.tigran.api.domain.model.common.search.DeviceOrderByOption;
+import com.tigran.api.domain.model.common.search.SearchProperties;
 import com.tigran.api.domain.model.entity.device.Device;
 
 /**
@@ -13,7 +13,8 @@ import com.tigran.api.domain.model.entity.device.Device;
 public interface DeviceRepositoryCustom {
 
     PageModel<Device> searchDevices(
-            final DeviceSearchProperties request,
-            final ModelStatus status,
-            final int page, final int size);
+            final SearchProperties searchProperties,
+            final int page,
+            final int size,
+            final DeviceOrderByOption orderBy);
 }

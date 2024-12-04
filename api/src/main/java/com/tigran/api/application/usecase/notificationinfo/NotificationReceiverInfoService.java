@@ -2,7 +2,7 @@ package com.tigran.api.application.usecase.notificationinfo;
 
 import com.tigran.api.adapter.outbound.feign.UserResourceClient;
 import com.tigran.api.domain.model.notification.reciver.NotificationReceiverInfo;
-import com.tigran.api.domain.model.shared.user.User;
+import com.tigran.api.domain.model.shared.user.UserAccount;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +25,7 @@ public class NotificationReceiverInfoService {
     }
 
     public List<NotificationReceiverInfo> getNotificationReceivers() {
-        List<User> list = userResourceClient.getAllUsersWithEnabledNotification();
+        List<UserAccount> list = userResourceClient.getAllUsersWithEnabledNotification();
         List<NotificationReceiverInfo> receiverInfos = new ArrayList<>();
         list.forEach(user -> receiverInfos.add(new NotificationReceiverInfo()));
         return receiverInfos;
