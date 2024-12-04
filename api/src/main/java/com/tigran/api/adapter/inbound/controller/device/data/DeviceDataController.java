@@ -1,6 +1,6 @@
-package com.tigran.api.adapter.inbound.controller.controller.device.data;
+package com.tigran.api.adapter.inbound.controller.device.data;
 
-import com.tigran.api.adapter.inbound.controller.controller.AbstractController;
+import com.tigran.api.adapter.inbound.controller.AbstractController;
 import com.tigran.api.application.dto.device.data.DeviceDataResponse;
 import com.tigran.api.domain.model.entity.common.base.ModelStatus;
 import com.tigran.api.domain.model.entity.device.data.DeviceData;
@@ -29,7 +29,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("api/device-data")
 @Tag(name = "Device Data API")
-@PreAuthorize("hasAnyAuthority('SUPER_ADMIN', 'ADMIN', 'USER')")
 public class DeviceDataController extends AbstractController {
 
     private final DeviceDataService deviceDataService;
@@ -40,6 +39,7 @@ public class DeviceDataController extends AbstractController {
 
     @DeleteMapping("{deviceId}")
     @Operation(summary = "Delete All Device Data by Device")
+    @PreAuthorize("hasAnyAuthority('SUPER_ADMIN', 'ADMIN')")
     public ResponseEntity<?> delete(
             @PathVariable("deviceId") final UUID id,
             @RequestParam final boolean deleteFromDb) {
@@ -49,7 +49,8 @@ public class DeviceDataController extends AbstractController {
 
     @GetMapping("{deviceId}/historical")
     @Operation(summary = "Search Device Data with time range")
-    public ResponseEntity<List<DeviceDataResponse>> getPagesForDevices(
+    @PreAuthorize("hasAnyAuthority('SUPER_ADMIN', 'ADMIN', 'USER')")
+    public ResponseEntity<List<DeviceDataResponse>> getDeviceDataWithRange(
             @PathVariable final UUID deviceId,
             @RequestParam final Instant startTime,
             @RequestParam final Instant endTime,

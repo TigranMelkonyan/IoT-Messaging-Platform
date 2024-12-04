@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.UUID;
+
 /**
  * Created by Tigran Melkonyan
  * Date: 12/4/24
@@ -17,6 +19,7 @@ import lombok.ToString;
 @ToString
 public class AccountResponse {
 
+    private UUID id;
     private UserResponse userResponse;
     private AccountNotificationInfo notificationInfo;
     private String userName;
@@ -26,6 +29,7 @@ public class AccountResponse {
 
     public static AccountResponse from(final Account account) {
         AccountResponse response = new AccountResponse();
+        response.setId(account.getId());
         response.setUserResponse(UserResponse.from(account.getUser()));
         response.setNotificationInfo(account.getNotificationInfo());
         response.setUserName(account.getUserName());
