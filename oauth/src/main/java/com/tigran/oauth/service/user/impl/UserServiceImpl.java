@@ -1,11 +1,11 @@
 package com.tigran.oauth.service.user.impl;
 
-import com.tigran.oauth.model.common.PageModel;
-import com.tigran.oauth.model.common.SearchProperties;
-import com.tigran.oauth.model.common.UserOrderByOption;
-import com.tigran.oauth.model.entity.user.User;
-import com.tigran.oauth.model.rest.request.user.CreateUserRequest;
-import com.tigran.oauth.model.rest.request.user.UpdateUserRequest;
+import com.tigran.oauth.domain.model.common.page.PageModel;
+import com.tigran.oauth.domain.model.common.page.SearchProperties;
+import com.tigran.oauth.domain.model.common.page.AccountOrderByOption;
+import com.tigran.oauth.domain.entity.user.User;
+import com.tigran.oauth.domain.model.rest.request.user.CreateUserRequest;
+import com.tigran.oauth.domain.model.rest.request.user.UpdateUserRequest;
 import com.tigran.oauth.repository.user.UserRepository;
 import com.tigran.oauth.service.user.UserService;
 import io.jsonwebtoken.lang.Assert;
@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public PageModel<User> search(final SearchProperties searchProperties, final UserOrderByOption orderByOption) {
+    public PageModel<User> search(final SearchProperties searchProperties, final AccountOrderByOption orderByOption) {
         return null;
     }
 

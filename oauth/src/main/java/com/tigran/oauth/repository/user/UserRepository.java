@@ -1,6 +1,6 @@
 package com.tigran.oauth.repository.user;
 
-import com.tigran.oauth.model.entity.user.User;
+import com.tigran.oauth.domain.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

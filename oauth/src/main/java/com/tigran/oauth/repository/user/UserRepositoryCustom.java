@@ -1,9 +1,9 @@
 package com.tigran.oauth.repository.user;
 
-import com.tigran.oauth.model.common.PageModel;
-import com.tigran.oauth.model.common.SearchProperties;
-import com.tigran.oauth.model.common.UserOrderByOption;
-import com.tigran.oauth.model.entity.user.User;
+import com.tigran.oauth.domain.model.common.page.PageModel;
+import com.tigran.oauth.domain.model.common.page.SearchProperties;
+import com.tigran.oauth.domain.model.common.page.AccountOrderByOption;
+import com.tigran.oauth.domain.entity.user.User;
 
 /**
  * Created by Tigran Melkonyan
@@ -12,5 +12,5 @@ import com.tigran.oauth.model.entity.user.User;
  */
 public interface UserRepositoryCustom {
 
-    PageModel<User> search(final SearchProperties searchProperties, final UserOrderByOption orderByOption);
+    PageModel<User> search(final SearchProperties searchProperties, final AccountOrderByOption orderByOption);
 }
