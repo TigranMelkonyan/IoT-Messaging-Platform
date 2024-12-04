@@ -52,6 +52,8 @@ public class UpdateNotificationTemplateRequest extends ValidatableRequest {
     @ZoneIdValidator(message = "required")
     private ZoneId zoneId;
 
+    private boolean enableNotifications;
+
     public NotificationTemplate toEntity(final NotificationTemplate notificationTemplate) {
         notificationTemplate.setTempMaxThreshold(this.tempMaxThreshold);
         notificationTemplate.setTempMinThreshold(this.tempMinThreshold);
@@ -62,6 +64,7 @@ public class UpdateNotificationTemplateRequest extends ValidatableRequest {
         notificationTemplate.setSendEndTime(this.sendEndTime);
         notificationTemplate.setTemperatureUnit(this.temperatureUnit);
         notificationTemplate.setBatteryThreshold(this.batteryThreshold);
+        notificationTemplate.setEnableNotifications(this.enableNotifications);
         return notificationTemplate;
     }
 }

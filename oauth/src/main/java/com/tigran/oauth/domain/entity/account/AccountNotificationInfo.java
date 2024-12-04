@@ -19,7 +19,6 @@ public class AccountNotificationInfo extends AuditableBaseEntity {
     @OneToOne(mappedBy = "notificationInfo")
     public Account account;
 
-    private boolean enableNotifications;
     private boolean emailNotificationEnabled;
     private boolean smsNotificationEnabled;
     private boolean pushNotificationEnabled;

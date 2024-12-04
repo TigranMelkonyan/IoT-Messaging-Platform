@@ -1,6 +1,7 @@
 package com.tigran.oauth.domain.model.rest.request.account;
 
 import com.tigran.oauth.domain.entity.account.Account;
+import com.tigran.oauth.domain.entity.account.AccountNotificationInfo;
 import com.tigran.oauth.domain.entity.user.User;
 import com.tigran.oauth.domain.model.rest.request.user.UpdateUserRequest;
 import com.tigran.oauth.domain.model.validation.ValidatableRequest;
@@ -27,12 +28,16 @@ public class UpdateAccountRequest extends ValidatableRequest {
     @Column(nullable = false)
     private String password;
 
+    private UpdateAccountNotificationInfo notificationInfo;
+
     public Account toEntity(
             final Account account,
-            final User user) {
+            final User user,
+            final AccountNotificationInfo info) {
         account.setUserName(this.userName);
         account.setPassword(this.password);
         account.setUser(user);
+        account.setNotificationInfo(notificationInfo.from(info));
         return account;
     }
 

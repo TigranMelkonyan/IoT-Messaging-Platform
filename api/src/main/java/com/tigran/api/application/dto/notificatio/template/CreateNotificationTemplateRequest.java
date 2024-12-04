@@ -52,17 +52,20 @@ public class CreateNotificationTemplateRequest extends ValidatableRequest {
     @ZoneIdValidator(message = "required")
     private ZoneId zoneId;
 
+    private boolean enableNotifications;
+
     public NotificationTemplate toEntity() {
         NotificationTemplate notificationTemplate = new NotificationTemplate();
         notificationTemplate.setTempMinThreshold(this.tempMinThreshold);
         notificationTemplate.setTempMaxThreshold(this.tempMaxThreshold);
         notificationTemplate.setHumMinThreshold(this.humMinThreshold);
         notificationTemplate.setHumMaxThreshold(this.humMaxThreshold);
-        notificationTemplate.setZoneId(this.zoneId);
         notificationTemplate.setSendStartTime(this.sendStartTime);
+        notificationTemplate.setZoneId(this.zoneId);
         notificationTemplate.setSendEndTime(this.sendEndTime);
         notificationTemplate.setTemperatureUnit(this.temperatureUnit);
         notificationTemplate.setBatteryThreshold(this.batteryThreshold);
+        notificationTemplate.setEnableNotifications(this.enableNotifications);
         return notificationTemplate;
     }
 }

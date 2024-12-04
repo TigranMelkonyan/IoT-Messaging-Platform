@@ -16,6 +16,5 @@ public class UserAccount {
     private String email;
     private String phone;
     private String firebaseClientToken;
-    private boolean enableNotifications;
     private UserAccountNotificationInfo notificationInfo;
 }

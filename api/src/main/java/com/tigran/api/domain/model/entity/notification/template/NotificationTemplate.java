@@ -37,4 +37,6 @@ public class NotificationTemplate extends AuditableBaseEntity {
     private LocalTime sendEndTime;
 
     private ZoneId zoneId;
+    
+    private boolean enableNotifications;
 }

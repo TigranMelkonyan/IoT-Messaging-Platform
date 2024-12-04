@@ -24,6 +24,7 @@ public class NotificationTemplateResponse {
     private TemperatureUnit temperatureUnit = TemperatureUnit.CELSIUS;
     private LocalTime sendStartTime;
     private LocalTime sendEndTime;
+    private boolean enableNotifications;
 
     public static NotificationTemplateResponse from(final NotificationTemplate notificationTemplate) {
         NotificationTemplateResponse response = new NotificationTemplateResponse();
@@ -36,6 +37,7 @@ public class NotificationTemplateResponse {
         response.setTemperatureUnit(notificationTemplate.getTemperatureUnit());
         response.setSendStartTime(notificationTemplate.getSendStartTime());
         response.setSendEndTime(notificationTemplate.getSendEndTime());
+        response.setEnableNotifications(notificationTemplate.isEnableNotifications());
         return response;
     }
 }
