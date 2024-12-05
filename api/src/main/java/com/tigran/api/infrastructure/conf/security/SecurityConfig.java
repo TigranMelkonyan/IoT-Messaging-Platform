@@ -41,7 +41,6 @@ public class SecurityConfig {
         return http.authorizeHttpRequests(
                         authorizeHttpRequests -> authorizeHttpRequests
                                 .requestMatchers(
-                                        "/api/oauth/token",
                                         "/webjars/**",
                                         "/swagger*/**").permitAll()
                                 .anyRequest().authenticated()

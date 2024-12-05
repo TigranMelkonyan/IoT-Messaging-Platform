@@ -2,6 +2,7 @@ package com.tigran.oauth.service.security;
 
 import com.tigran.oauth.conf.security.jwt.JwtClaim;
 import com.tigran.oauth.domain.entity.account.Account;
+import com.tigran.oauth.domain.model.common.role.Role;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -52,6 +53,17 @@ public class JwtService {
                 .setHeaderParam(TOKEN_TYPE_HEADER, TOKEN_TYPE)
                 .addClaims(claims)
                 .signWith(algorithm, signingKey)
+                .compact();
+    }
+
+    public String generateInvitationToken(final String email, final Role role) {
+        return Jwts.builder()
+                .setSubject(email)
+                .claim("type", "invitation")
+                .claim("role", role.name())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
+                .signWith(SignatureAlgorithm.HS256, jwtSecret)
                 .compact();
     }
 }

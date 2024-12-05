@@ -42,12 +42,14 @@ public class SecurityConfig {
                         authorizeHttpRequests -> authorizeHttpRequests
                                 .requestMatchers(
                                         "/api/oauth/token",
-                                        "/webjars/**",
-                                        "/swagger*/**").permitAll()
-                                .anyRequest().authenticated()
-                ).csrf(AbstractHttpConfigurer::disable)
-                .oauth2ResourceServer(resourceServer ->
-                        resourceServer.opaqueToken(token -> token.introspector(jwtTokenInspector)))
-                .build();
+                                        "/api/account-registration",
+                                        "/v3/api-docs/**",
+                                        "/swagger*/**",
+                                        "/webjars/**")
+                                .permitAll()
+                                .anyRequest().authenticated())
+                .csrf(AbstractHttpConfigurer::disable)
+                .oauth2ResourceServer(resourceServer -> resourceServer
+                        .opaqueToken(token -> token.introspector(jwtTokenInspector))).build();
     }
 }

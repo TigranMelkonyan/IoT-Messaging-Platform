@@ -1,4 +1,4 @@
-package com.tigran.oauth.controller.admin;
+package com.tigran.oauth.controller.account.admin;
 
 import com.tigran.oauth.controller.AbstractController;
 import com.tigran.oauth.domain.entity.account.Account;

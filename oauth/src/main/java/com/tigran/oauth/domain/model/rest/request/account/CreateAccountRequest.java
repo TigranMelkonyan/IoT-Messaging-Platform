@@ -6,6 +6,7 @@ import com.tigran.oauth.domain.entity.account.Account;
 import com.tigran.oauth.domain.entity.user.User;
 import com.tigran.oauth.domain.model.rest.request.user.CreateUserRequest;
 import com.tigran.oauth.domain.model.validation.ValidatableRequest;
+import com.tigran.oauth.util.password.PasswordUtils;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -29,20 +30,23 @@ public class CreateAccountRequest extends ValidatableRequest {
     @Column(unique = true, nullable = false)
     private String password;
 
-    @NotNull
     @JsonIgnore
     private Role role;
 
     @JsonIgnore
     private String firebaseClientToken;
+    
+    @JsonIgnore
+    private boolean verified;
 
     public Account toEntity(final User user) {
         Account account = new Account();
         account.setUserName(this.userName);
         account.setRole(this.role);
         account.setUser(user);
-        account.setPassword(this.password);
+        account.setPassword(PasswordUtils.encode(this.password));
         account.setFirebaseClientToken(this.firebaseClientToken);
+        account.setVerified(this.verified);
         return account;
     }
 
