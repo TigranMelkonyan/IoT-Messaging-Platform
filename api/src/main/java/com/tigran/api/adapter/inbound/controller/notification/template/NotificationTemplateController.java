@@ -64,6 +64,24 @@ public class NotificationTemplateController extends AbstractController {
         return respondOK(NotificationTemplateResponse.from(template));
     }
 
+    @PutMapping("{template_id}/{receiver_id}/add")
+    @Operation(summary = "Add receiver to Notification Template")
+    public ResponseEntity<?> addReceiver(
+            @PathVariable("template_id") final UUID templateId,
+            @PathVariable("receiver_id") final UUID receiverId) {
+        notificationTemplateService.addReceiver(templateId, receiverId);
+        return respondEmpty();
+    }
+
+    @PostMapping("{template_id}/{receiver_id}/remove")
+    @Operation(summary = "Remove receiver from Notification Template")
+    public ResponseEntity<?> removeReceiver(
+            @PathVariable("template_id") final UUID templateId,
+            @PathVariable("receiver_id") final UUID receiverId) {
+        notificationTemplateService.removeReceiver(templateId, receiverId);
+        return respondEmpty();
+    }
+
     @DeleteMapping("{id}")
     @Operation(summary = "Delete Notification Template")
     public ResponseEntity<?> delete(

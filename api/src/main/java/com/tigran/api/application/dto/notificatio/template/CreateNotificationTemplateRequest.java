@@ -4,16 +4,17 @@ import com.tigran.api.domain.model.common.validate.ValidatableRequest;
 import com.tigran.api.domain.model.common.validate.ZoneIdValidator;
 import com.tigran.api.domain.model.entity.notification.template.NotificationTemplate;
 import com.tigran.api.domain.model.entity.notification.template.TemperatureUnit;
-import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.util.UUID;
 
 /**
  * Created by Tigran Melkonyan
@@ -23,6 +24,9 @@ import java.time.ZoneId;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class CreateNotificationTemplateRequest extends ValidatableRequest {
+
+    @NotNull(message = "required")
+    private UUID deviceId;
 
     @Min(value = -40)
     private double tempMinThreshold;
@@ -43,10 +47,7 @@ public class CreateNotificationTemplateRequest extends ValidatableRequest {
     @Enumerated(value = EnumType.STRING)
     private TemperatureUnit temperatureUnit = TemperatureUnit.CELSIUS;
 
-    @Column(columnDefinition = "Time")
     private LocalTime sendStartTime;
-
-    @Column(columnDefinition = "Time")
     private LocalTime sendEndTime;
 
     @ZoneIdValidator(message = "required")
@@ -56,6 +57,7 @@ public class CreateNotificationTemplateRequest extends ValidatableRequest {
 
     public NotificationTemplate toEntity() {
         NotificationTemplate notificationTemplate = new NotificationTemplate();
+        notificationTemplate.setDeviceId(this.deviceId);
         notificationTemplate.setTempMinThreshold(this.tempMinThreshold);
         notificationTemplate.setTempMaxThreshold(this.tempMaxThreshold);
         notificationTemplate.setHumMinThreshold(this.humMinThreshold);

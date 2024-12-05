@@ -1,6 +1,6 @@
 package com.tigran.api.adapter.inbound.messaging;
 
-import com.tigran.api.application.usecase.DeviceDataProcessingService;
+import com.tigran.api.application.usecase.device.data.DeviceDataProcessingService;
 import com.tigran.api.domain.model.event.cosnumer.ConsumerEvent;
 import com.tigran.api.domain.model.rabbitmq.DevicePublishData;
 import lombok.extern.log4j.Log4j2;

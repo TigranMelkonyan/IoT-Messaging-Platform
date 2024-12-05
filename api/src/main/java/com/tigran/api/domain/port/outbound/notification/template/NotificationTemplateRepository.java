@@ -4,6 +4,7 @@ import com.tigran.api.domain.model.entity.notification.template.NotificationTemp
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -13,4 +14,8 @@ import java.util.UUID;
  */
 @Repository
 public interface NotificationTemplateRepository extends JpaRepository<NotificationTemplate, UUID> {
+    
+    boolean existsByDeviceId(final UUID deviceId);
+    
+    Optional<NotificationTemplate> findByDeviceId(final UUID deviceId);
 }

@@ -16,6 +16,7 @@ import java.util.UUID;
 public class NotificationTemplateResponse {
 
     private UUID id;
+    private UUID deviceId;
     private double tempMinThreshold;
     private double tempMaxThreshold;
     private double humMinThreshold;
@@ -29,6 +30,7 @@ public class NotificationTemplateResponse {
     public static NotificationTemplateResponse from(final NotificationTemplate notificationTemplate) {
         NotificationTemplateResponse response = new NotificationTemplateResponse();
         response.setId(notificationTemplate.getId());
+        response.setDeviceId(notificationTemplate.getDeviceId());
         response.setTempMinThreshold(notificationTemplate.getTempMinThreshold());
         response.setTempMaxThreshold(notificationTemplate.getTempMaxThreshold());
         response.setHumMinThreshold(notificationTemplate.getHumMinThreshold());
