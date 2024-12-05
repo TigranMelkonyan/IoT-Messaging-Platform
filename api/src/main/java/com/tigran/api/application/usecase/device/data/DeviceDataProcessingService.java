@@ -62,8 +62,8 @@ public class DeviceDataProcessingService {
     public void processDeviceData(final DevicePublishData data) {
         try {
             //Preserving data
-            Device device = deviceService.getByMacAddress(data.getMacAddress());
             log.info("Processing device data for device with macAddress - {}", data.getMacAddress());
+            Device device = deviceService.getByMacAddress(data.getMacAddress());
 
             //Sending data to socket
             webSocketPublisher.publishData(data);
