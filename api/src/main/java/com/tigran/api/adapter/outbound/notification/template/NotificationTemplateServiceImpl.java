@@ -56,6 +56,7 @@ public class NotificationTemplateServiceImpl implements NotificationTemplateServ
     }
 
     @Override
+    @Transactional
     public NotificationTemplate getByDeviceId(final UUID deviceId) {
         log.info("Retrieving Notification Template with device id - {} ", deviceId);
         Assert.notNull(deviceId, "Id cannot be null");
