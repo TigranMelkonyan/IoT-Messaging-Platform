@@ -86,11 +86,11 @@ public class DeviceDataProcessingService {
                         notifyReceivers(receivers);
                     }
                 }
+                log.info("Successfully processed device data for device macAddress - {}", data.getMacAddress());
             }
         } catch (Exception e) {
             log.warn("Error message processing device data - {}", e.getMessage());
         }
-        log.info("Successfully processed device data for device macAddress - {}", data.getMacAddress());
     }
 
     private void notifyReceivers(final List<NotificationReceiverInfo> receivers) {
